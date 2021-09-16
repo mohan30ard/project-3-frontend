@@ -1,0 +1,107 @@
+<mat-card>
+  <h1>Welcome User</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-2">
+        <form (ngSubmit)="searchtrain()">
+          <div class="row">
+            <mat-form-field class="col-xs-4" appearance="fill">
+              <mat-label>From </mat-label>
+              <!-- <input type="text" name="tno" placeholder="Enter Starting Location" matInput /> -->
+              <input type="text" [(ngModel)]="search.start" name="start" required matInput />
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="col-xs-4" appearance="fill">
+              <mat-label>To</mat-label>
+              <!-- <input type="text" name="start" placeholder="Enter Departing Location" matInput /> -->
+              <input type="text" [(ngModel)]="search.end" name="end" required matInput />
+            </mat-form-field>
+          </div>
+
+          <div class="row">
+            <mat-form-field class="col-xs-4" appearance="fill">
+              <mat-label>Date</mat-label>
+              <!-- <input type="date" name="date" placeholder="Enter Date" matInput /> -->
+              <input type="date" [(ngModel)]="search.date" name="date" matInput />
+            </mat-form-field>
+          </div>
+
+          <div class="container text-center">
+            <button mat-raised-button color="primary" data-toggle="modal" data-target="#customers" type="submit">Search
+              Trains</button>
+            <!-- <button data-toggle="modal" data-target="#customers" type="submit" class="btn btn-info">Check</button> -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</mat-card>
+
+
+<!-- customers modal  -->
+<!-- large modal -->
+<div class="modal fade" id="customers">
+  <div class="modal-dialog modal-xl modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="text-center" style="font-size: large;"><b>Schedule</b>
+        </h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <br>
+        <div *ngIf="bool,else elseblock">
+          <table class='table table-striped table-bordered'>
+            <thead class='thead-light text-center'>
+              <tr>
+                <th>Train No.</th>
+                <th>Train Name</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Arrival</th>
+                <th>Departure</th>
+                <th>Date</th>
+                <th>Destination Time</th>
+                <th>Distance</th>
+                <th>Book Tickets</th>
+            </thead>
+            <tbody class="text-center">
+              <tr *ngFor="let route of routedetails">
+                <td>{{route.td.tno}}</td>
+                <td> {{route.td.tname}} </td>
+                <td> {{route.startpoint}} </td>
+                <td> {{search.end}} </td>
+                <td> {{route.arrival}} </td>
+                <td> {{route.depart}} </td>
+                <td> {{route.date}} </td>
+                <td> {{route.interval}} </td>
+                <td> {{route.gap}} </td>
+                <td>
+                  <button (click)="dataForBook(route.td.tid,route.gap)" data-dismiss="modal"
+                  type="submit" class="btn btn-primary">Book</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ng-template #elseblock>
+          {{msg}}
+        </ng-template>
+      </div>
+
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- end modal  -->

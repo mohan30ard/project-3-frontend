@@ -1,0 +1,123 @@
+<mat-card>
+  <h1>Add New Train</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form (ngSubmit)="formSubmit()">
+          <div class="row">
+            <div class="col-md-6">
+              <!-- //max marks -->
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>Train Number</mat-label>
+                <input [(ngModel)]="train.tno" type="text" name="tno" placeholder="Enter Train Number" matInput />
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <!-- number of question to be shown  -->
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>Train Name</mat-label>
+                <input [(ngModel)]="train.tname" type="text" name="tname" placeholder="Enter Train Number" matInput />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <!-- //max marks -->
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>Starting Point</mat-label>
+                <input [(ngModel)]="train.start" type="text" name="start" placeholder="Enter Starting Point" matInput />
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <!-- number of question to be shown  -->
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>Last_Stoppage</mat-label>
+                <input [(ngModel)]="train.stop" type="text" name="stop" placeholder="Enter Ending Point" matInput />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <!-- //max marks -->
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>Date</mat-label>
+                <input type="date" [(ngModel)]="train.date" name="date" placeholder="Enter Date" matInput />
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <!-- number of question to be shown  -->
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>Number of Coaches</mat-label>
+                <input [(ngModel)]="train.totalCoach" type="number" name="numberOfcoaches"
+                  placeholder="Enter Number of Coaches" matInput />
+              </mat-form-field>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <!-- //max marks -->
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>Ac Sleeper Coach</mat-label>
+                <input [(ngModel)]="train.acSleeperCoach" type="number" name="acSleeperCoach"
+                  placeholder="Enter Ac Sleeper Coach" matInput />
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <!-- //max marks -->
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>AC_Sitting_Coach</mat-label>
+                <input [(ngModel)]="train.acSittingCoach" type="number" name="AC_Sitting_Coach"
+                  placeholder="Enter AC_Sitting_Coach" matInput />
+              </mat-form-field>
+            </div>
+
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <!-- //max marks -->
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>Coach-Non_AC_Sitting</mat-label>
+                <input [(ngModel)]="train.nonAcSittingCoach" type="number" name="Coach-Non_AC_Sitting"
+                  placeholder="Enter Coach-Non_AC_Sitting" matInput />
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <!-- number of question to be shown  -->
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>Coach-Non_Ac_Sleeper</mat-label>
+                <input [(ngModel)]="train.nonAcSleeperCoach" type="number" name="Coach-Non_AC_Sleeper"
+                  placeholder="Enter Coach-Non_AC_Sleeper" matInput />
+              </mat-form-field>
+            </div>
+
+          </div>
+
+
+
+
+          <br />
+          <!-- //category select  -->
+          <mat-form-field appearance="fill" class="mt20 w100">
+            <mat-label>Categories</mat-label>
+            <mat-select name="category" [(ngModel)]="train.category.catId">
+              <mat-option *ngFor="let c of categories" [value]="c.catId">
+                {{ c.type }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="container text-center">
+            <button mat-raised-button color="primary" type="submit">Add Train</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,22 @@
+<mat-card>
+  <h1>Payment form</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <!-- {{paymentDetails|json}} -->
+        <form (ngSubmit)="paymentStart()">
+          <mat-form-field class="w100" appearance="fill">
+            <strong>
+            <mat-label>Enter Amount</mat-label>
+            <input [(ngModel)]="this.paymentDetails.amount" type="text" name="amount" placeholder="Enter Amount"
+              matInput disabled/></strong>
+          </mat-form-field>
+          <div class="container">
+            <button class="btn btn-success" type="submit">Pay</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</mat-card>

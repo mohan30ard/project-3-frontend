@@ -1,0 +1,53 @@
+<div class="page-holder align-items-center py-4 bg-gray-100 vh-100">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 px-lg-4">
+        <div class="card">
+
+          <div class="card-body p-lg-5">
+            <h3 class="mb-4 text-center">Hi, welcome back! 👋👋</h3>
+
+            <form (ngSubmit)="formSubmit()">
+              <div class="form-floating mb-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Username</mat-label>
+                  <input [(ngModel)]="loginData.username" matInput placeholder="Enter Username" required name="username"
+                    ngModel #username="ngModel">
+                  <mat-error *ngIf="username.invalid">
+                    username is required
+                  </mat-error>
+                </mat-form-field>
+
+              </div>
+              <div class="form-floating mb-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input type="password" [(ngModel)]="loginData.password" matInput placeholder="Enter Your Password" required
+                    name="password" ngModel minlength="6" #password="ngModel">
+                  <mat-error *ngIf="password.errors && password.errors.required">
+                    Password is required
+                  </mat-error>
+                  <mat-error *ngIf="password.errors && password.errors.minlength">
+                    Password must be of length 6
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
+              <mat-checkbox>Remember Me!</mat-checkbox>
+              <button class="login-button" type="submit" mat-raised-button color="primary">Login</button>
+            </form>
+          </div>
+          <div class="card-footer px-lg-5 py-lg-4">
+            <div class="text-sm text-muted">Don't have an account? <a [routerLink]="'/register'">Register</a>.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-xl-6 ms-xl-auto px-lg-4 text-center text-primary " style="margin-top: 15px;"><img class="img-fluid mb-4  d-block rounded-circle
+              " src="../../assets/logintrain.jpg" alt="" style="height:fit-content;width: fit-content; ">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

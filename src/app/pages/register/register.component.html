@@ -1,0 +1,109 @@
+<!-- register -->
+<div class="page-holder align-items-center py-4 bg-gray-100 vh-100">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 px-lg-4">
+        <div class="card">
+
+          <div class="card-body p-lg-5">
+            <h3 class="mb-4 text-center">Get started with Railway</h3>
+            <!-- {{customer | json}} -->
+            <form (ngSubmit)="formSubmit()">
+              <div class="form-floating mb-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Username</mat-label>
+                  <input [(ngModel)]="customer.username" matInput placeholder="Enter Username" required name="username"
+                    ngModel #username="ngModel">
+                  <mat-error *ngIf="username.invalid">
+                    username is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="form-floating mb-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Full name</mat-label>
+                  <input [(ngModel)]="customer.name" matInput placeholder="Enter Full name" required name="name" ngModel
+                    #name="ngModel">
+                  <mat-error *ngIf="name.invalid">
+                    fullname is required
+                  </mat-error>
+                </mat-form-field>
+
+              </div>
+              <div class="form-floating mb-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Email Address</mat-label>
+                  <input [(ngModel)]="customer.email" matInput placeholder="Enter Your Email" required name="email"
+                    ngModel #email="ngModel">
+                  <mat-error *ngIf="email.invalid">
+                    email is required
+                  </mat-error>
+                </mat-form-field>
+
+              </div>
+              <div class="form-floating mb-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input type="password" [(ngModel)]="customer.password" matInput placeholder="Enter Your Password" required
+                    name="password" ngModel minlength="6" #password="ngModel">
+                  <mat-error *ngIf="password.errors && password.errors.required">
+                    Password is required
+                  </mat-error>
+                  <mat-error *ngIf="password.errors && password.errors.minlength">
+                    Password must be of length 6
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
+
+              <div class="form-floating mb-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Phone Number</mat-label>
+                  <input [(ngModel)]="customer.phone" matInput placeholder="Enter Your Phone Number" required
+                    name="phone" ngModel #phone="ngModel">
+                  <mat-error *ngIf="phone.invalid">
+                    "phone is required
+                  </mat-error>
+                </mat-form-field>
+
+              </div>
+
+              <div class="form-floating mb-3">
+                <mat-form-field appearance="outline">
+                  <mat-label>Aadhar Number</mat-label>
+                  <input [(ngModel)]="customer.aadhar" matInput placeholder="Enter Your Aadhar Number" required
+                    name="aadhar" ngModel #aadhar="ngModel">
+                  <mat-error *ngIf="aadhar.invalid">
+                    aadhar is required
+                  </mat-error>
+                </mat-form-field>
+
+              </div>
+              <div class="form-floating mb-3">
+                <mat-form-field class="w75" appearance="outline">
+                  <mat-label>Address</mat-label>
+
+                  <textarea required name="address" matInput placeholder="Enter Complete Address"
+                    [(ngModel)]="customer.address" rows="8"></textarea>
+                </mat-form-field>
+
+              </div>
+              <div>
+                <button mat-raised-button color="primary" class="btn btn-primary signup-button" id="regidter"
+                  type="submit" name="registerSubmit">Register</button>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer px-lg-5 py-lg-4">
+            <div class="text-sm text-muted">Already have an account? <a [routerLink]="'/login'">Login</a>.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-xl-6 ms-xl-auto px-lg-4 text-center text-primary " style="margin-top: 15px;"><img class="img-fluid mb-4  d-block rounded-circle
+        " src="../../assets/logintrain.jpg" alt="" style="border-radius: 50%;">
+
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

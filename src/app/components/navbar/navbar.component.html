@@ -1,0 +1,30 @@
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+  <div class="container d-flex align-items-center justify-content-between">
+    <h1 class="nav-link scrollto active"><a [routerLink]="''"><i class="fas fa-train fa-lg mr-2"></i></a>Revature
+      Railways</h1>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a *ngIf="!isLoggedIn" class="nav-link scrollto" [routerLink]="''"><i
+              class="fa fa-home fa-fw mr-1"></i>Home</a></li>
+        <!-- <li><a class="nav-link scrollto" href="#about"><i class="fas fa-users fa-fw mr-1"></i>About Us</a></li>
+        <li><a class="nav-link scrollto" href="#services"><i class="fas fa-concierge-bell fa-fw mr-1"></i>Services</a> -->
+        <!-- </li> -->
+        <li><a *ngIf="!isLoggedIn" class="nav-link scrollto" routerLink="/register"><i
+              class="fas fa-user-plus fa-fw mr-1"></i>Sign Up</a>
+        </li>
+        <li><a *ngIf="!isLoggedIn" class="nav-link scrollto" routerLink="/login"><i
+              class="fas fa-sign-in-alt fa-fw mr-1"></i>Login</a></li>
+
+        <li><a *ngIf="isLoggedIn" class="nav-link scrollto" (click)="logout()"><i
+              class="fas fa-sign-in-alt fa-fw mr-1"></i>Logout</a>
+        <li><a *ngIf="isLoggedIn && user" class="nav-link scrollto" routerLink="/customer-dashboard"><i
+              class="fas fa-users fa-fw mr-1"></i>{{user.username}}</a>
+      </ul>
+
+    </nav>
+
+  </div>
+</header>
+<!-- End Header -->

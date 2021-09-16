@@ -1,0 +1,81 @@
+<form (ngSubmit)="checkavailabilty()">
+  <mat-form-field appearance="fill" class="mt20 w100">
+    <mat-label>Select Seat Type</mat-label>
+    <mat-select name="category" [(ngModel)]="booking.coachType">
+      <mat-option value="availAcSittingSeat">AC Sitting</mat-option>
+      <mat-option value="availNonAcSittingSeat">Non-AC Sitting</mat-option>
+      <mat-option value="availNonAcSleeperSeat">Non-AC Sleeper Seat</mat-option>
+      <mat-option value="availAcSleeperSeat">AC Sleeper Seat</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+  <button type="submit" class="btn btn-primary">Check Availability</button>
+</form>
+<hr>
+
+<div class="form-control">
+  <form *ngIf="flag,else elseblock" (ngSubmit)="confirmbooking()">
+
+    <div class="row">
+      <mat-form-field class="col-xs-4" appearance="fill">
+        <mat-label>Passenger's Name</mat-label>
+        <input type="text" [(ngModel)]="booking.pname" placeholder="Enter Passenger's name" required id="pname"
+          name="pname" matInput />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="col-xs-4" appearance="fill">
+        <mat-label>Passenger's Age</mat-label>
+        <input type="number" [(ngModel)]="booking.page" placeholder="Enter Passenger's age" required id="page"
+          name="page" matInput />
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-xs-4" appearance="fill">
+        <mat-label>Select Gender</mat-label>
+        <mat-select name="category" [(ngModel)]="booking.pgender">
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="Female">Female</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-xs-4" appearance="fill">
+        <mat-label>Physically Disabled</mat-label>
+        <mat-select name="category" [(ngModel)]="booking.pdisabled">
+          <mat-option value="true">Disabled</mat-option>
+          <mat-option value="false">Not Disabled</mat-option>
+        </mat-select>
+
+      </mat-form-field>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <button type="button" (click)="checkPrice()" class="btn btn-primary" style="margin-left: 15px; margin-right: 20px;">Calculate price</button>
+      </div>
+      <h1 class="form-control">{{finalprice}}</h1>
+    </div>
+
+    <div class="container text-center">
+      <button mat-raised-button color="primary" data-toggle="modal" data-target="#customers"
+        type="submit">Checkout</button>
+    </div>
+  </form>
+</div>
+
+<div>
+  <ng-template #elseblock>
+    <div *ngIf="!bool">
+      <!-- <h1 >Select The Seat Type</h1> -->
+    </div>
+    <div *ngIf="bool">
+      <!-- <h1>Seat Not Available</h1> -->
+    </div>
+    <hr>
+  </ng-template>
+</div>
